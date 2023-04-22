@@ -21,6 +21,7 @@ class Operaciones (QMainWindow):
         self.ui.bttn_calcularsuma.clicked.connect(self.Suma)
         self.ui.bttn_calcularresta.clicked.connect(self.Resta)
         self.ui.bttn_calcularmulti.clicked.connect(self.Multiplicacion)
+        self.ui.bttn_trasponer.clicked.connect(self.traspuesta)
     
     def Suma(self):
         for i in range(3):
@@ -165,6 +166,36 @@ class Operaciones (QMainWindow):
         self.ui.txt_mR21.setText(str(resultado[2][1]))
         self.ui.txt_mR22.setText(str(resultado[2][2]))
         
+    def traspuesta(self):
+        for i in range(3):
+            for j in range(3):
+                a.append([0]*3)
+                resultado.append([0]*3)
+        
+        a[0][0] = float(self.ui.txt_tras00.text())
+        a[0][1] = float(self.ui.txt_tras01.text())
+        a[0][2] = float(self.ui.txt_tras02.text())
+        a[1][0] = float(self.ui.txt_tras10.text())
+        a[1][1] = float(self.ui.txt_tras11.text())
+        a[1][2] = float(self.ui.txt_tras12.text())
+        a[2][0] = float(self.ui.txt_tras20.text())
+        a[2][1] = float(self.ui.txt_tras21.text())
+        a[2][2] = float(self.ui.txt_tras22.text())
+
+        for i in range(3):
+            for j in range(3):
+                resultado[i][j] = a[j][i]
+
+        self.ui.txt_tR00.setText(str(resultado[0][0]))
+        self.ui.txt_tR01.setText(str(resultado[0][1]))
+        self.ui.txt_tR02.setText(str(resultado[0][2]))
+        self.ui.txt_tR10.setText(str(resultado[1][0]))
+        self.ui.txt_tR11.setText(str(resultado[1][1]))
+        self.ui.txt_tR12.setText(str(resultado[1][2]))
+        self.ui.txt_tR20.setText(str(resultado[2][0]))
+        self.ui.ttxt_tR21.setText(str(resultado[2][1]))
+        self.ui.txt_tR22.setText(str(resultado[2][2]))
+
 
 
     
