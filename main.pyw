@@ -22,6 +22,7 @@ class Operaciones (QMainWindow):
         self.ui.bttn_calcularresta.clicked.connect(self.Resta)
         self.ui.bttn_calcularmulti.clicked.connect(self.Multiplicacion)
         self.ui.bttn_trasponer.clicked.connect(self.traspuesta)
+        self.ui.bttn_determinante.clicked.connect(self.determinante)
     
     def Suma(self):
         for i in range(3):
@@ -196,7 +197,27 @@ class Operaciones (QMainWindow):
         self.ui.ttxt_tR21.setText(str(resultado[2][1]))
         self.ui.txt_tR22.setText(str(resultado[2][2]))
 
+    def determinante(self):
+        for i in range(3):
+            for j in range(3):
+                a.append([0]*3)
 
+        a[0][0] = float(self.ui.txt_deter00.text())
+        a[0][1] = float(self.ui.txt_deter02.text())
+        a[0][2] = float(self.ui.txt_deter03.text())
+        a[1][0] = float(self.ui.txt_deter10.text())
+        a[1][1] = float(self.ui.txt_deter11.text())
+        a[1][2] = float(self.ui.txt_deter12.text())
+        a[2][0] = float(self.ui.txt_deter20.text())
+        a[2][1] = float(self.ui.txt_deter21.text())
+        a[2][2] = float(self.ui.txt_deter22.text())   
+
+        dp = a[0][0]*a[1][1]*a[2][2] + a[0][1]*a[1][2]*a[2][0] + a[0][2]*a[1][0]*a[2][1]
+        ds = a[2][0]*a[1][1]*a[0][2] + a[2][1]*a[1][2]*a[0][0] + a[2][2]*a[1][0]*a[0][1]
+
+        deter= dp - ds
+
+        self.ui.txt_resultadodeter.setText(str(deter))
 
     
 if __name__ == "__main__":
